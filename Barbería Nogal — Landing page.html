@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecomunicaciones Perú</title>
+    <!-- Tipografías: Playfair Display (Serif con carácter) e Inter (Sans neutra y legible) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #F7F5F0;
+            --main-color: #14231E;
+            --accent-color: #C89D34;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--main-color);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Utilidades generales */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+        }
+
+        section {
+            padding: 7rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 4rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* 1. Hero a pantalla completa */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #FFFFFF;
+            padding: 2rem;
+            background: linear-gradient(rgba(20, 35, 30, 0.6), rgba(20, 35, 30, 0.6)), url('img/1.jpg') center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-family: var(--font-serif);
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* 2. Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background-color: transparent;
+            border-top: 2px solid var(--main-color);
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .service-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .service-price {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .service-duration {
+            opacity: 0.7;
+        }
+
+        /* 3. Por qué elegirnos */
+        .why-us {
+            background-color: var(--main-color);
+            color: var(--bg-color);
+            max-width: 100%;
+            padding: 8rem 2rem;
+        }
+
+        .why-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 4rem;
+        }
+
+        .why-us-item h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .why-us-item p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+        }
+
+        /* 4. Galería */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background-color: #e0ded9;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(20, 35, 30, 0.85));
+            color: #ffffff;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+        }
+
+        /* 6. Reseñas */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .review-card {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 2rem;
+        }
+
+        .review-card blockquote {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .review-author {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* 7. Preguntas frecuentes */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            border-bottom: 1px solid rgba(20, 35, 30, 0.2);
+            padding: 1.5rem 0;
+            cursor: pointer;
+        }
+
+        summary {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 2rem;
+            font-weight: 400;
+            font-family: var(--font-sans);
+            line-height: 1;
+        }
+
+        details[open] summary::after {
+            content: "-";
+        }
+
+        details p {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* 8. Contacto y footer */
+        footer {
+            background-color: var(--main-color);
+            color: var(--bg-color);
+            padding: 6rem 2rem 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--bg-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--bg-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        .btn-reserve {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--main-color);
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 2rem;
+            transition: filter 0.2s;
+        }
+
+        .btn-reserve:hover {
+            filter: brightness(1.1);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(247, 245, 240, 0.15);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Hero a pantalla completa -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Telecomunicaciones Perú</h1>
+            <p>Más de veinte años conectando hogares y empresas con redes seguras y duraderas.</p>
+        </div>
+    </header>
+
+    <!-- 2. Servicios -->
+    <section id="servicios">
+        <h2 class="section-title">Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Diseño y tendido de fibra óptica</h3>
+                <div class="service-details">
+                    <span class="service-price">Desde S/ 450</span>
+                    <span class="service-duration">1 a 3 días</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <h3>Mantenimiento de redes de telecomunicaciones</h3>
+                <div class="service-details">
+                    <span class="service-price">S/ 280</span>
+                    <span class="service-duration">4 horas</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <h3>Instalación y certificación de redes locales (LAN)</h3>
+                <div class="service-details">
+                    <span class="service-price">Desde S/ 350</span>
+                    <span class="service-duration">1 día</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <h3>Despliegue de infraestructuras para redes móviles</h3>
+                <div class="service-details">
+                    <span class="service-price">Cotización a medida</span>
+                    <span class="service-duration">Según proyecto</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <h3>Instalación de equipos de telefonía fija y centralitas</h3>
+                <div class="service-details">
+                    <span class="service-price">S/ 200</span>
+                    <span class="service-duration">3 horas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Por qué elegirnos -->
+    <section class="why-us">
+        <div class="why-us-container">
+            <h2 class="section-title" style="color: #F7F5F0;">Por qué elegirnos</h2>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <h3>Experiencia comprobada</h3>
+                    <p>Conocemos el terreno y resolvemos con solvencia cada imprevisto técnico desde el primer día.</p>
+                </div>
+                <div class="why-us-item">
+                    <h3>Materiales certificados</h3>
+                    <p>Trabajamos exclusivamente con componentes de primera calidad que aseguran una larga vida útil sin cortes.</p>
+                </div>
+                <div class="why-us-item">
+                    <h3>Trato directo</h3>
+                    <p>Hablas directamente con los técnicos encargados de la obra, sin intermediarios ni demoras administrativas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Galería -->
+    <section id="galeria">
+        <h2 class="section-title">Nuestros Trabajos</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="img/1.jpg" alt="Tendido de cables">
+                <div class="gallery-caption">Tendido de cables en postes urbanos</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/1.jpg" alt="Fibra óptica">
+                <div class="gallery-caption">Fusión de hilos de fibra óptica</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/1.jpg" alt="Estación base">
+                <div class="gallery-caption">Instalación en estación base</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/1.jpg" alt="Racks de comunicaciones">
+                <div class="gallery-caption">Organización de racks de oficina</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/1.jpg" alt="Cuadrilla técnica">
+                <div class="gallery-caption">Cuadrilla técnica en vía pública</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/1.jpg" alt="Medición de red">
+                <div class="gallery-caption">Verificación con medidores ópticos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Reseñas -->
+    <section id="resenas">
+        <h2 class="section-title">Reseñas</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <blockquote>"Llevamos contratando su mantenimiento anual para nuestras oficinas y la respuesta siempre es inmediata y eficaz."</blockquote>
+                <div class="review-author">— Carlos Mendoza, Gerente de Operaciones</div>
+            </div>
+            <div class="review-card">
+                <blockquote>"Hicieron todo el tendido de fibra óptica sin interrumpir nuestro horario laboral. Un trabajo impecable y serio."</blockquote>
+                <div class="review-author">— Mariana Rivas, Administradora de Finca</div>
+            </div>
+            <div class="review-card">
+                <blockquote>"Se nota la experiencia de los años. Van a lo seguro, explican bien lo que hacen y cumplen con los plazos."</blockquote>
+                <div class="review-author">— Jorge Alarcón, Junta de Propietarios</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Preguntas frecuentes -->
+    <section id="faq">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="faq-container">
+            <details>
+                <summary>¿Trabajan tanto para empresas como para particulares?</summary>
+                <p>Sí, realizamos desde instalaciones puntuales en domicilios hasta grandes despliegues de redes para edificios y naves industriales.</p>
+            </details>
+            <details>
+                <summary>¿Ofrecen garantía en las instalaciones?</summary>
+                <p>Todas nuestras instalaciones y trabajos de fibra óptica cuentan con garantía por escrito frente a cualquier defecto de montaje o componentes.</p>
+            </details>
+            <details>
+                <summary>¿Se requiere visita previa para presupuestar?</summary>
+                <p>Para proyectos medianos o grandes, realizamos una visita técnica previa sin costo para asegurar un presupuesto exacto y adaptado a las condiciones reales del terreno.</p>
+            </details>
+            <details>
+                <summary>¿En qué zonas de Perú prestamos servicio?</summary>
+                <p>Operamos principalmente en Lima Metropolitana y coordinamos trabajos en principales provincias según la magnitud del proyecto.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- 8. Contacto y footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h2>Telecomunicaciones Perú</h2>
+                <p>Oficio, confianza y trayectoria en cada conexión.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>Teléfono: +51 (01) 234-5678</li>
+                    <li>WhatsApp: +51 987 654 321</li>
+                    <li>Instagram: @telecomunicacionesperu</li>
+                    <li>Dirección: Av. Industrial 450, Lima, Perú</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Telecomunicaciones Perú. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
